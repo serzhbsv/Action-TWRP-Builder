@@ -116,7 +116,8 @@ jobs:
 
     - name: Repo Sync
       run: |
-        repo sync -j$(nproc --all) --force-sync
+        repo sync -c -j8 --no-clone-bundle --no-tags
+        rm -rf .repo
       working-directory: workspace
 
     - name: Clone device tree
