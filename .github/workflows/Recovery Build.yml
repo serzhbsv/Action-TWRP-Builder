@@ -65,12 +65,7 @@ jobs:
     # You might want to Checkout your repo first, but not mandatory
     - name: Check Out
       uses: actions/checkout@v4
-
-    # Cleanup The Actions Workspace Using Custom Composite Run Actions
-    - name: Cleanup
-      uses: rokibhasansagar/slimhub_actions@main
-      # That's it! Now use your normal steps
-
+    
     - name: Prepare the environment
       run: |
         docker rmi `docker images -q`
@@ -81,6 +76,11 @@ jobs:
         sudo apt clean
         sudo apt update
         sudo apt -y install bc libstdc++6 git gcc libssl-dev repo
+        
+    # Cleanup The Actions Workspace Using Custom Composite Run Actions
+    - name: Cleanup
+      uses: rokibhasansagar/slimhub_actions@main
+      # That's it! Now use your normal steps
 
     - name: Install OpenJDK
       uses: actions/setup-java@v4
